@@ -35,7 +35,11 @@ public class Game {
 
 
 	public Player nextPlayer() {
-		if (this.currentPlayer == this.player1) {
+		return getOpponent(this.currentPlayer);
+	}
+
+	public Player getOpponent(Player player) {
+		if (player == this.player1) {
 			return player2;
 		} else {
 			return player1;

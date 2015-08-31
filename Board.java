@@ -13,7 +13,7 @@ public class Board  {
 
 	public Board(Game game, Player[][] pieces) {
 		this(game, pieces.length);
-		this.pieces = pieces;
+		this.pieces = initPieces(pieces);
 	}
 
 	private Player[][] initPieces(int size) {
@@ -151,6 +151,9 @@ public class Board  {
 			return null;
 	}
 
+	public int size() {
+		return size;
+	}
 	public String toString() {
 		String ans = "";
 		String def = "-";
