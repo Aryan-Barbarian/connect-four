@@ -10,7 +10,7 @@ public class AIPlayer extends Player {
 	
 	public int bestMove() {
 		// TODO: Implement
-		Point maxVal = maxValue(this.getGame().getBoard(), this, 3);
+		Point maxVal = maxValue(this.getGame().getBoard(), this, 8);
 		System.out.println("BEST MOVE IS : " + maxVal.x + " @ " + maxVal.y);
 		return maxVal.x;
 	}
@@ -48,7 +48,6 @@ public class AIPlayer extends Player {
 		for (int i = 0; i < num_moves; i++ ) {
 			Board possibleBoard = board.moveCopy(player, i);
 			if (possibleBoard == null) {
-				System.out.println("Board is null");
 				continue;
 			}
 			int possibleVal = -this.maxValue(possibleBoard, opponent, depth).y;
