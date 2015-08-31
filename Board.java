@@ -38,15 +38,15 @@ public class Board  {
 
 	public boolean move(Player player, int position) {
 		if (position < 0 || position >= this.size)
-			return False;
+			return false;
 
 		for (int row = 0; row < this.pieces[position].length; row++) {
 			if (this.pieces[position][row] == null ) {
 				this.pieces[position][row] = player;
-				return True;
+				return true;
 			}
 		}
-		return False;
+		return false;
 	}
 
 	public int longestRun(Player player) {
@@ -154,7 +154,7 @@ public class Board  {
 	public String toString() {
 		String ans = "";
 		String def = "-";
-		for (int row = 0; row < this.size; row++ ) {
+		for (int row = this.size - 1; row >= 0 ; row-- ) {
 			String line = "";
 			for (int col = 0; col < this.size; col++ ) {
 				Player currPlayer = this.pieces[col][row];

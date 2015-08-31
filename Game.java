@@ -14,16 +14,23 @@ public class Game {
 	public void turn() {
 		Player player = this.currentPlayer;
 		System.out.println("Getting next move from " + player.getMark());
-		int nextMove = player.getMove();
+		int nextMove = -1;
+		while (! this.move(player, nextMove))
+			nextMove = player.getMove();
 		System.out.println("Player " + player.getMark() + " moved to " + nextMove);
-		this.move(player, nextMove);
 		this.currentPlayer = this.nextPlayer();
+		this.printBoard();
 	}
 
 
 	public void printBoard() {
 		System.out.println("###  BOARD  ###");
 		System.out.println("" + this.board);
+		System.out.println("###############");
+		System.out.println(this.board.longestRun(this.player1));
+		System.out.println(this.board.longestRun(this.player2));
+		System.out.println("###############");
+
 	}
 
 
@@ -35,8 +42,8 @@ public class Game {
 		}
 	}
 
-	public void move(Player player, int move) {
-		this.board.move(player, move);
+	public boolean move(Player player, int move) {
+		return this.board.move(player, move);
 	}
 
 	public Player getWinner() {
