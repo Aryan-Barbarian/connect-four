@@ -4,13 +4,15 @@ import java.util.Random;
 public class AIPlayer extends Player {
 	private final int MINIMUM_SCORE = -1000;
 	private final int MAXIMUM_SCORE = 1000;
+	private final int MAX_DEPTH = 8;
+
 	public AIPlayer(String mark) {
 		super(mark);
 	}
 	
 	public int bestMove() {
 		// TODO: Implement
-		Point maxVal = maxValue(this.getGame().getBoard(), this, 8);
+		Point maxVal = maxValue(this.getGame().getBoard(), this, MAX_DEPTH);
 		System.out.println("BEST MOVE IS : " + maxVal.x + " @ " + maxVal.y);
 		return maxVal.x;
 	}
