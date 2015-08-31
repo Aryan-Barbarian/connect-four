@@ -71,17 +71,19 @@ public class Board  {
 		if (newVal > ans)
 			ans = newVal;
 
-		int newVal = eastRun(player, col, row);
+		newVal = eastRun(player, col, row);
 		if (newVal > ans)
 			ans = newVal;
 
-		int newVal = southEastRun(player, col, row);
+		newVal = southEastRun(player, col, row);
 		if (newVal > ans)
 			ans = newVal;
 
-		int newVal = southWestRun(player, col, row);
+		newVal = southWestRun(player, col, row);
 		if (newVal > ans)
 			ans = newVal;
+
+		return ans;
 	}
 
 	private int southRun(Player player, int col, int row) {
@@ -111,7 +113,7 @@ public class Board  {
 
 	private int southWestRun(Player player, int col, int row) {
 		int ans = 0;
-		for (int i = 0; (col + i < this.pieces.length) && (row - i >= 0)); i++ ) {
+		for (int i = 0; ((col + i < this.pieces.length) && (row - i >= 0)); i++ ) {
 			if (this.pieces[col + i][row - i] == player) {
 				ans++;
 			} else {
@@ -123,7 +125,7 @@ public class Board  {
 
 	private int southEastRun(Player player, int col, int row) {
 		int ans = 0;
-		for (int i = 0; (i + col < this.pieces.length) && (i + row < this.pieces.length)); i++ ) {
+		for (int i = 0; ((i + col < this.pieces.length) && (i + row < this.pieces.length)); i++ ) {
 			if (this.pieces[col + i][row + i] == player) {
 				ans++;
 			} else {
@@ -133,21 +135,14 @@ public class Board  {
 		return ans;
 	}
 
-	public Player getWinner() {
-		if (this.longestRun(this.game.player1) == MAX_RUN_LENGTH) {
-			return this.game.player1;
-		}
-
-		if (this.longestRun(this.game.player2) == MAX_RUN_LENGTH) {
-			return this.game.player2;
-		}
-
-		return null;
+	public boolean isWinner(Player player) {
+		return (this.longestRun(player) == MAX_RUN_LENGTH);
 	}
 
 	public Board moveCopy(Player player, int position) {
 		Board ans = this.copy();
 		ans.move(player, position);
+		return ans;
 	}
 
 	public String toString() {
@@ -157,10 +152,10 @@ public class Board  {
 			String line = "";
 			for (int col = 0; col < this.size; col++ ) {
 				Player currPlayer = this.pieces[col][row];
-				if (currPlayer = null) {
+				if (currPlayer == null) {
 					line += def;
 				} else {
-					line += player.getMark();
+					line += currPlayer.getMark();
 				}
 			}
 			ans += line + "\n";

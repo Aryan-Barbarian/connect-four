@@ -13,9 +13,9 @@ public class Game {
 
 	public void turn() {
 		Player player = this.currentPlayer;
-		System.out.println("Getting next move from " + player.name);
+		System.out.println("Getting next move from " + player.getMark());
 		int nextMove = player.getMove();
-		System.out.println("Player " + player.name + " moved to " + nextMove);
+		System.out.println("Player " + player.getMark() + " moved to " + nextMove);
 		this.move(player, nextMove);
 		this.currentPlayer = this.nextPlayer();
 	}
@@ -40,7 +40,19 @@ public class Game {
 	}
 
 	public Player getWinner() {
-		return this.board.getWinner();
+		if (board.isWinner(this.player1)) {
+			return this.player1;
+		}
+
+		if (board.isWinner(this.player2)) {
+			return this.player2;
+		}
+
+		return null;
+	}
+
+	public Board getBoard() {
+		return this.board;
 	}
 
 }

@@ -1,6 +1,6 @@
 public abstract class Player {
  	private Game game;
-
+ 	private String mark;
  	public Player(String mark) {
  		this.game = null;
  		this.mark = mark;
