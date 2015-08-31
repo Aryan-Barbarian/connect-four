@@ -36,13 +36,17 @@ public class Board  {
 		return new Board(this.game, this.pieces);
 	}
 
-	public void move(Player player, int position) {
+	public boolean move(Player player, int position) {
+		if (position < 0 || position >= this.size)
+			return False;
+
 		for (int row = 0; row < this.pieces[position].length; row++) {
 			if (this.pieces[position][row] == null ) {
 				this.pieces[position][row] = player;
-				return;
+				return True;
 			}
 		}
+		return False;
 	}
 
 	public int longestRun(Player player) {
@@ -141,8 +145,10 @@ public class Board  {
 
 	public Board moveCopy(Player player, int position) {
 		Board ans = this.copy();
-		ans.move(player, position);
-		return ans;
+		if (ans.move(player, position))
+			return ans;
+		else
+			return null;
 	}
 
 	public String toString() {
