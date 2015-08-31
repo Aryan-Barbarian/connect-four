@@ -1,5 +1,7 @@
 public class HumanPlayer {
-	public HumanPlayer() {
-		
+
+	public int bestMove() {
+		// TODO: Get from user
 	}
+
 }
