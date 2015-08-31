@@ -2,19 +2,20 @@ public abstract class AIPlayer {
 
 	
 	public int bestMove() {
+		// TODO: Implement
+	}
+
+	private int heuristic(Board board, Player player) {
+		Game game = this.getGame();
 
 	}
 
-	private int heuristic(Game game, Player player) {
-
+	private int minValue(Board board, Player player, int depth) {
+		// TODO: Implement
 	}
 
-	private int minValue(Game game, Player player, int depth) {
-		
-	}
-
-	private int maxValue(Game game, Player player, int depth) {
-		
+	private int maxValue(Board board, Player player, int depth) {
+		// TODO: Implement
 	}
 
 }

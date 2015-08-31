@@ -12,18 +12,35 @@ public class Game {
 	}
 
 	public void turn() {
-		// TODO: Implement
-
+		Player player = this.currentPlayer;
+		System.out.println("Getting next move from " + player.name);
+		int nextMove = player.getMove();
+		System.out.println("Player " + player.name + " moved to " + nextMove);
+		this.move(player, nextMove);
 		this.currentPlayer = this.nextPlayer();
 	}
 
 
-	public Player nextPlayer() {
-		// TODO: Implement
+	public void printBoard() {
+		System.out.println("###  BOARD  ###");
+		System.out.println("" + this.board);
 	}
 
-	public void makeMove(Player player, int move) {
-		// TODO: Implement
+
+	public Player nextPlayer() {
+		if (this.currentPlayer == this.player1) {
+			return player2;
+		} else {
+			return player1;
+		}
+	}
+
+	public void move(Player player, int move) {
+		this.board.move(player, move);
+	}
+
+	public Player getWinner() {
+		return this.board.getWinner();
 	}
 
 }

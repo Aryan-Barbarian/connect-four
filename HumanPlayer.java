@@ -1,7 +1,9 @@
+import java.util.Scanner;
 public class HumanPlayer {
 
 	public int bestMove() {
-		// TODO: Get from user
+		Scanner scanner = new Scanner(System.in);
+		return scanner.nextInt(); // TODO: Errors?
 	}
 
 }

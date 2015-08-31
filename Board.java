@@ -134,12 +134,12 @@ public class Board  {
 	}
 
 	public Player getWinner() {
-		if (this.longestRun(this.player1) == MAX_RUN_LENGTH) {
-			return this.player1;
+		if (this.longestRun(this.game.player1) == MAX_RUN_LENGTH) {
+			return this.game.player1;
 		}
 
-		if (this.longestRun(this.player2) == MAX_RUN_LENGTH) {
-			return this.player2;
+		if (this.longestRun(this.game.player2) == MAX_RUN_LENGTH) {
+			return this.game.player2;
 		}
 
 		return null;
@@ -148,5 +148,23 @@ public class Board  {
 	public Board moveCopy(Player player, int position) {
 		Board ans = this.copy();
 		ans.move(player, position);
+	}
+
+	public String toString() {
+		String ans = "";
+		String def = "-";
+		for (int row = 0; row < this.size; row++ ) {
+			String line = "";
+			for (int col = 0; col < this.size; col++ ) {
+				Player currPlayer = this.pieces[col][row];
+				if (currPlayer = null) {
+					line += def;
+				} else {
+					line += player.getMark();
+				}
+			}
+			ans += line + "\n";
+		}
+		return ans;
 	}
 }
